@@ -6,19 +6,22 @@ DESTDIR := $(EMACS.D)
 SRC_DIR := src
 PRELUDE_DIR= prelude
 PERSONAL_DIR := $(SRC_DIR)/personal
-PERSONAL_SRCS := $(wildcard $(PERSONAL_DIR)/*.el)
+PERSONAL_SRCS := $(shell find $(PERSONAL_DIR)/ -type f -name '*.el')
 PERSONAL_TARGETS := $(patsubst $(SRC_DIR)/%,$(DESTDIR)/%,$(PERSONAL_SRCS))
 
-# compilation targets
-SUBDIRS := prelude
-ELCS := $(SRCS:.el=.elc)
+MODULES_DIR := $(SRC_DIR)/modules
+MODULES_SRCS := $(wildcard $(MODULES_DIR)/*.el)
+MODULES_TARGETS := $(patsubst $(SRC_DIR)/%,$(DESTDIR)/%,$(MODULES_SRCS))
 
-install: $(PERSONAL_TARGETS)
+install: $(MODULES_TARGETS) $(PERSONAL_TARGETS)
 
 ## private worker targets
 
 # install personal files in destination
 $(DESTDIR)/personal/%: $(PERSONAL_DIR)/% install-prelude
+	$(INSTALL) $< $@
+
+$(DESTDIR)/modules/%: $(MODULES_DIR)/% install-prelude
 	$(INSTALL) $< $@
 
 install-prelude:

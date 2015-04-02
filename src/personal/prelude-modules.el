@@ -4,6 +4,13 @@
 (require 'prelude-helm) ;; Interface for narrowing and search
 (require 'prelude-company)
 
+;;; Custom hb modules
+
+;;; In Dolby environment
+(DolbyDev
+ (require 'hb-p4)
+ (message "Done loading Dolby Dev Requirements"))
+
 ;;; Programming languages support
 (require 'prelude-c)
 (require 'prelude-emacs-lisp)
