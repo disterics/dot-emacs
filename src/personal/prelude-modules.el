@@ -1,0 +1,17 @@
+;;; the prelude modules to enable
+
+(require 'prelude-ido) ;; Super charges Emacs completion for C-x C-f and more
+(require 'prelude-helm) ;; Interface for narrowing and search
+(require 'prelude-company)
+
+;;; Programming languages support
+(require 'prelude-c)
+(require 'prelude-emacs-lisp)
+(require 'prelude-js)
+(require 'prelude-org) ;; Org-mode helps you keep TODO lists, notes and more
+(require 'prelude-python)
+(require 'prelude-ruby)
+(require 'prelude-scala)
+(require 'prelude-shell)
+(require 'prelude-xml)
+(require 'prelude-yaml)

@@ -1,4 +1,4 @@
 dot-emacs
 =========
 
-My emacs initialization
+My emacs configuration which is a customization of prelude [http://batsov.com/prelude/].

@@ -1,28 +1,30 @@
-include cabbage/common.inc
+INSTALL := install -m 644 -CD
 
-SRCS := init.el config.el
+
+EMACS.D := ~/.emacs.d
 DESTDIR := $(EMACS.D)
-DESTDIRS := $(DESTDIR)
+SRC_DIR := src
+PRELUDE_DIR= prelude
+PERSONAL_DIR := $(SRC_DIR)/personal
+PERSONAL_SRCS := $(wildcard $(PERSONAL_DIR)/*.el)
+PERSONAL_TARGETS := $(patsubst $(SRC_DIR)/%,$(DESTDIR)/%,$(PERSONAL_SRCS))
 
 # compilation targets
-SUBDIRS := cabbage
+SUBDIRS := prelude
 ELCS := $(SRCS:.el=.elc)
 
-include cabbage/makefile.inc
+install: $(PERSONAL_TARGETS)
 
-# install: all destdirs files
-# -for f in $(ELCS); do (install $$f $(EMACS.D)/. ); done
+## private worker targets
 
-install-cabbage:
-	$(MAKE) -C cabbage install
+# install personal files in destination
+$(DESTDIR)/personal/%: $(PERSONAL_DIR)/% install-prelude
+	$(INSTALL) $< $@
 
-install-cabbage-debug:
-	$(MAKE) -C cabbage install-debug
-
-install-debug:
-	-for f in $(SRCS); do (install $$f $(EMACS.D)/. ); done
+install-prelude:
+	rsync -rupE --delete-excluded --exclude .git** prelude/ $(EMACS.D)/.
 
 clean-install:
 	-rm -rf $(EMACS.D)
 
-.PHONY: install install-cabbage install-debug clean-install install-cabbage-debug
+.PHONY: install-prelude
