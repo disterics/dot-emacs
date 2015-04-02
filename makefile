@@ -22,7 +22,7 @@ $(DESTDIR)/personal/%: $(PERSONAL_DIR)/% install-prelude
 	$(INSTALL) $< $@
 
 install-prelude:
-	rsync -rupE --delete-excluded --exclude .git** prelude/ $(EMACS.D)/.
+	rsync -rupE --delete-excluded --exclude .git** prelude/ $(EMACS.D)
 
 clean-install:
 	-rm -rf $(EMACS.D)
