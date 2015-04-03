@@ -45,5 +45,9 @@ If var is undefined returns an empty string"
   (list 'if (string-match "dolby" (get-env-soft "HBARNOR_DEV_ROLES"))
         (cons 'progn body)))
 
+(defmacro CentOS5Dev (&rest body)
+  (list 'if (string-match "CentOS release 5" (shell-command-to-string "lsb_release -sd"))
+        (cons 'progn body)))
+
 (provide 'hb-core)
 ;;; hb-core.el ends here

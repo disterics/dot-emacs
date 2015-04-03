@@ -11,6 +11,10 @@
  (require 'hb-p4)
  (message "Done loading Dolby Dev Requirements"))
 
+(CentOS5Dev
+ (setq-default flycheck-disabled-checkers '(c/c++-gcc))
+ (message "Done loading CentOS5 Dev requirements"))
+
 ;;; Programming languages support
 (require 'prelude-c)
 (require 'prelude-emacs-lisp)
