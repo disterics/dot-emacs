@@ -13,21 +13,32 @@ MODULES_DIR := $(SRC_DIR)/modules
 MODULES_SRCS := $(wildcard $(MODULES_DIR)/*.el)
 MODULES_TARGETS := $(patsubst $(SRC_DIR)/%,$(DESTDIR)/%,$(MODULES_SRCS))
 
-install: $(MODULES_TARGETS) $(PERSONAL_TARGETS)
+# variables for prelude-modules file
+PRELUDE_MODULES_FILE := src/prelude-modules.el
+PRELUDE_MODULES_TARGET := $(patsubst $(SRC_DIR)/%,$(DESTDIR)/%,$(PRELUDE_MODULES_FILE))
+
+# hack for installing prelude with dependency checking
+INSTALL_PRELUDE := $(EMACS.D)/init.el
+PRELUDE_INIT := $(PRELUDE_DIR)/init.el
+
+install: $(MODULES_TARGETS) $(PERSONAL_TARGETS) $(PRELUDE_MODULES_TARGET)
+
+$(PRELUDE_MODULES_TARGET): $(PRELUDE_MODULES_FILE) $(INSTALL_PRELUDE)
+	$(INSTALL) $< $@
 
 ## private worker targets
 
 # install personal files in destination
-$(DESTDIR)/personal/%: $(PERSONAL_DIR)/% install-prelude
+$(DESTDIR)/personal/%: $(PERSONAL_DIR)/% $(INSTALL_PRELUDE)
 	$(INSTALL) $< $@
 
-$(DESTDIR)/modules/%: $(MODULES_DIR)/% install-prelude
+$(DESTDIR)/modules/%: $(MODULES_DIR)/% $(INSTALL_PRELUDE)
 	$(INSTALL) $< $@
 
-install-prelude:
-	rsync -rupE --delete-excluded --exclude .git** prelude/ $(EMACS.D)
+$(INSTALL_PRELUDE): $(PRELUDE_INIT)
+	rsync -n -rupE --delete-excluded --exclude .git** prelude/ $(EMACS.D)
 
 clean-install:
 	-rm -rf $(EMACS.D)
 
-.PHONY: install-prelude
+.PHONY: install
