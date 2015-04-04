@@ -36,7 +36,7 @@ $(DESTDIR)/modules/%: $(MODULES_DIR)/% $(INSTALL_PRELUDE)
 	$(INSTALL) $< $@
 
 $(INSTALL_PRELUDE): $(PRELUDE_INIT)
-	rsync -n -rupE --delete-excluded --exclude .git** prelude/ $(EMACS.D)
+	rsync -rupE --delete-excluded --exclude .git** prelude/ $(EMACS.D)
 
 clean-install:
 	-rm -rf $(EMACS.D)
