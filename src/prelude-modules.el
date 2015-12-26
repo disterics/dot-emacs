@@ -18,7 +18,6 @@
 ;;; Programming languages support
 (require 'prelude-c)
 (require 'prelude-emacs-lisp)
-(require 'prelude-js)
 (require 'prelude-org) ;; Org-mode helps you keep TODO lists, notes and more
 (require 'prelude-python)
 (require 'prelude-ruby)
@@ -26,3 +25,8 @@
 (require 'prelude-shell)
 (require 'prelude-xml)
 (require 'prelude-yaml)
+
+;;; Custom programming languages support
+(require 'hb-js)
+
+;;; prelude-modules.el ends here
