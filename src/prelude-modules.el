@@ -16,7 +16,6 @@
  (message "Done loading CentOS5 Dev requirements"))
 
 ;;; Programming languages support
-(require 'prelude-c)
 (require 'prelude-emacs-lisp)
 (require 'prelude-org) ;; Org-mode helps you keep TODO lists, notes and more
 (require 'prelude-python)
@@ -27,6 +26,7 @@
 (require 'prelude-yaml)
 
 ;;; Custom programming languages support
+(require 'hb-c)
 (require 'hb-js)
 
 ;;; prelude-modules.el ends here
