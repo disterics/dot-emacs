@@ -9,11 +9,15 @@
 ;;; In Dolby environment
 (DolbyDev
  (require 'hb-p4)
+ (when (getenv "ECLIPSE_HOME")
+   (require 'hb-eclim)
+   (message "Loaded eclim"))
  (message "Done loading Dolby Dev Requirements"))
 
 (CentOS5Dev
  (setq-default flycheck-disabled-checkers '(c/c++-gcc))
  (message "Done loading CentOS5 Dev requirements"))
+
 
 ;;; Programming languages support
 (require 'prelude-emacs-lisp)
