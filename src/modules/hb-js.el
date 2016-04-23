@@ -1,6 +1,6 @@
 ;;; hb-js.el --- Emacs Prelude: js-mode configuration.
 ;;
-;; Copyright © 2011-2015 Bozhidar Batsov
+;; Copyright © 2011-2015 disterics
 ;;
 ;; Author: disterics <disterics@wojeshun.net>
 ;; URL: https://github.com/disterics/dot-emacs

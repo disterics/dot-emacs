@@ -1,6 +1,6 @@
 ;;; hb-c.el --- Emacs Prelude: cc-mode configuration.
 ;;
-;; Copyright © 2015-2016 Henry Barnor
+;; Copyright © 2015-2016 disterics
 ;;
 ;; Author: disterics <disterics@wojeshun.net>
 ;; URL: https://github.com/disterics/dot-emacs
