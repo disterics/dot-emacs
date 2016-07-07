@@ -11,7 +11,7 @@
 
 ;;; Commentary:
 
-;; Some basic configuration for cc-mode and the modes dericed from it.
+;; Some basic configuration for cc-mode and the modes derived from it.
 
 ;;; License:
 
@@ -40,7 +40,11 @@
 (eval-after-load 'google-c-style
   '(progn
      (defun hb-c-mode-common-defaults ()
-       (setq c-basic-offset 4))
+       (google-set-c-style)
+       (google-make-newline-indent)
+       (setq c-basic-offset 4)
+       (c-set-offset 'substatement-open 0)
+       (c-set-offset 'innamespace . [0]))
 
      (setq hb-c-mode-common-hook 'hb-c-mode-common-defaults)
 
@@ -54,6 +58,11 @@
 
 (add-hook 'makefile-mode-hook (lambda ()
                                 (run-hooks 'hb-makefile-mode-hook)))
+
+(setq c-default-style
+      '((java-mode . "java")
+        (awk-mode . "awk")
+        (other . "Google")))
 
 (provide 'hb-c)
 
