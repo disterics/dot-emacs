@@ -36,5 +36,8 @@
 ;; the projectile-keymap-prefix before that happens
 (setq projectile-keymap-prefix (kbd "C-c C-p"))
 
+;; enable debug mode for errors
+(setq debug-on-error t)
+
 (provide 'hb-customize)
 ;;; hb-customize.el ends here
