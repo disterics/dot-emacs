@@ -40,7 +40,7 @@
   "Personal keymap.")
 
 (global-unset-key (kbd "C-x C-m"))
-(global-set-key (kbd "C-c C-m") 'smex)
+(global-set-key (kbd "C-c C-m") 'helm-M-x)
 
 (global-unset-key (kbd "C-c p"))
 (global-set-key (kbd "C-c p") personal-map)
