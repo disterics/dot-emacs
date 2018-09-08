@@ -35,6 +35,7 @@
 (require 'hb-c)
 (require 'hb-js)
 (require 'hb-php)
+(require 'hb-web)
 (require 'hb-vue)
 
 ;;; prelude-modules.el ends here
