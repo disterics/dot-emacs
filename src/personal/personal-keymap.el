@@ -45,5 +45,10 @@
 (global-unset-key (kbd "C-c p"))
 (global-set-key (kbd "C-c p") personal-map)
 
+;; Remap the C-c p prefix to my personal map
+(let ((map prelude-mode-map))
+  (define-key map (kbd "C-c C-p") 'projectile-command-map)
+  (define-key map (kbd "C-c p") personal-map))
+
 (provide 'personal-keymap)
 ;;; personal-keymap.el ends here
