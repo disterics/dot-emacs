@@ -1,6 +1,6 @@
-;;; hb-custom.el --- Emacs Prelude: Costumizations that need to be pre-loaded.
+;;; hb-editor.el --- Emacs Prelude: enhanced editing configuration.
 ;;
-;; Copyright © 2011-2015 distercs
+;; Copyright © 2011-2017 disterics
 ;;
 ;; Author: disterics <disterics@wojeshun.net>
 ;; URL: https://github.com/disterics/dot-emacs
@@ -11,7 +11,7 @@
 
 ;;; Commentary:
 
-;; Here the customizations that need to be loaded before prelude starts-up.
+;; Refinements of the editing experience in Emacs.
 
 ;;; License:
 
@@ -32,15 +32,13 @@
 
 ;;; Code:
 
-;; prelude-editing requires projectile so we need to customize the
-;; the projectile-keymap-prefix before that happens
-(setq projectile-keymap-prefix (kbd "C-c C-p"))
+;; enable and configure ws-butler to unobtrusively trim spaces
 
-;; disable whitespace clean-up on save to keep commits clean
-(setq prelude-clean-whitespace-on-save nil)
+(prelude-require-packages '(ws-butler))
 
-;; enable debug mode for errors
-(setq debug-on-error t)
+(require 'ws-butler)
+(add-hook 'prog-mode-hook #'ws-butler-mode)
 
-(provide 'hb-customize)
-;;; hb-customize.el ends here
+(provide 'hb-editor)
+
+;;; hb-editor.el ends here

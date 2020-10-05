@@ -18,6 +18,7 @@
  (setq-default flycheck-disabled-checkers '(c/c++-gcc))
  (message "Done loading CentOS5 Dev requirements"))
 
+(require 'hb-editor)
 
 ;;; Programming languages support
 (require 'prelude-css)

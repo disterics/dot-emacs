@@ -1,5 +1,15 @@
-INSTALL := install -m 644 -CD
+# Makefile
+ifeq ($(OS),Windows_NT)
+	detected_OS := Windows
+else
+	detected_OS := $(shell uname)
+endif
 
+ifeq ($(detected_OS),Darwin)
+	INSTALL := install -m 644 -C
+else
+	INSTALL := install -m 644 -CD
+endif
 
 EMACS.D := ~/.emacs.d
 DESTDIR := $(EMACS.D)
