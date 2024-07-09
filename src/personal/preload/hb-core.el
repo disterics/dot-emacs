@@ -49,5 +49,9 @@ If var is undefined returns an empty string"
   (list 'if (string-match "CentOS release 5" (shell-command-to-string "lsb_release -sd"))
         (cons 'progn body)))
 
+(defmacro Google (&rest body)
+  (list 'if (string-match "google" (get-env-soft "HBARNOR_DEV_ROLES"))
+	(cons 'progn body)))
+
 (provide 'hb-core)
 ;;; hb-core.el ends here

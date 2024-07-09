@@ -18,6 +18,17 @@
  (setq-default flycheck-disabled-checkers '(c/c++-gcc))
  (message "Done loading CentOS5 Dev requirements"))
 
+(Google
+ (require 'google)
+ ;; Configure projectile for ChromeOS
+ (projectile-register-project-type 'Ninja '("build.gn")
+                                   :project-file "build.gn"
+                                   :compilation-dir "out"
+                                   :compile "ninja -C out"
+                                   :configure "gn gen out"
+                                   )
+ (message "Welcome Googler!"))
+
 (require 'hb-editor)
 
 ;;; Programming languages support

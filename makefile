@@ -11,7 +11,7 @@ else
 	INSTALL := install -m 644 -CD
 endif
 
-EMACS.D := ~/.emacs.d
+EMACS.D := ~/.local/etc/emacs
 DESTDIR := $(EMACS.D)
 SRC_DIR := src
 PRELUDE_DIR= prelude
@@ -24,7 +24,7 @@ MODULES_SRCS := $(wildcard $(MODULES_DIR)/*.el)
 MODULES_TARGETS := $(patsubst $(SRC_DIR)/%,$(DESTDIR)/%,$(MODULES_SRCS))
 
 # variables for prelude-modules file
-PRELUDE_MODULES_FILE := src/prelude-modules.el
+PRELUDE_MODULES_FILE := src/personal/prelude-modules.el
 PRELUDE_MODULES_TARGET := $(patsubst $(SRC_DIR)/%,$(DESTDIR)/%,$(PRELUDE_MODULES_FILE))
 
 # hack for installing prelude with dependency checking
