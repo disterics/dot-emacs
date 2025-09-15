@@ -4,7 +4,6 @@
 
 ;; install the helm search packages
 (prelude-require-packages '(ag
-                            helm-ag
                             ggtags))
 
 (provide 'personal-packages)
